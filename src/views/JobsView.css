@@ -1,0 +1,168 @@
+/* ---- Day Board ---- */
+.board {
+  background: var(--sp-bg-raised);
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius-lg);
+  overflow-x: auto;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: 70px repeat(3, minmax(220px, 1fr));
+  min-width: 720px;
+}
+
+.board-col {
+  border-right: 1px solid var(--sp-border);
+  position: relative;
+}
+.board-col:last-child { border-right: none; }
+.board-col-times { background: var(--sp-bg-sunken); }
+
+.board-col-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-space-2);
+  padding: var(--sp-space-3) var(--sp-space-4);
+  border-bottom: 2px solid var(--sp-navy-900);
+  background: var(--sp-navy-900);
+  color: #fff;
+  height: 64px;
+}
+.board-col-times .board-col-head { background: var(--sp-navy-900); }
+.board-col-name { font-size: 13px; font-weight: var(--sp-fw-bold); }
+.board-col-meta { font-size: 11px; color: var(--sp-navy-300); text-transform: uppercase; letter-spacing: 0.06em; font-weight: var(--sp-fw-bold); }
+
+.board-col-body {
+  position: relative;
+}
+.board-time-cell {
+  height: 60px;
+  border-bottom: 1px dashed var(--sp-border);
+  padding: 4px 8px;
+  font-size: 11px;
+  color: var(--sp-text-muted);
+  font-family: var(--sp-font-mono);
+  font-weight: var(--sp-fw-bold);
+  text-align: right;
+}
+.board-slot {
+  height: 60px;
+  border-bottom: 1px dashed var(--sp-border);
+}
+
+.board-job {
+  position: absolute;
+  left: 6px; right: 6px;
+  background: #fff;
+  border: 2px solid var(--sp-navy-900);
+  border-left: 4px solid var(--sp-navy-900);
+  border-radius: var(--sp-radius-sm);
+  padding: 6px 8px;
+  font-size: 12px;
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+  cursor: pointer;
+  transition: transform var(--sp-dur-fast) var(--sp-ease);
+}
+.board-job:hover { transform: translateX(1px); }
+.board-job.is-urgent {
+  border-color: var(--sp-red-600);
+  background: var(--sp-red-100);
+}
+.board-job.is-progress {
+  border-color: var(--sp-orange-500);
+  background: var(--sp-orange-100);
+}
+.board-job-time {
+  font-family: var(--sp-font-mono);
+  font-weight: var(--sp-fw-bold);
+  font-size: 11px;
+  color: var(--sp-navy-700);
+}
+.board-job-cust { font-weight: var(--sp-fw-bold); margin: 2px 0; }
+.board-job-svc { font-size: 11px; color: var(--sp-navy-600); }
+
+/* ---- Route Sheet ---- */
+.route {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--sp-space-5);
+}
+.route-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--sp-space-4) var(--sp-space-5);
+  border-bottom: 1px solid var(--sp-border);
+}
+.route-tech { font-size: var(--sp-text-md); font-weight: var(--sp-fw-bold); }
+.route-stops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.route-stop {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: var(--sp-space-3);
+  padding: var(--sp-space-4) var(--sp-space-5);
+  border-bottom: 1px solid var(--sp-border);
+  position: relative;
+}
+.route-stop::before {
+  content: "";
+  position: absolute;
+  left: 31px; top: 56px; bottom: 8px;
+  width: 2px;
+  background: var(--sp-border-strong);
+}
+.route-stop:last-child { border-bottom: none; }
+.route-stop:last-child::before { display: none; }
+
+.route-stop-num {
+  width: 32px; height: 32px;
+  background: var(--sp-navy-900);
+  color: #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--sp-fw-bold);
+  font-size: var(--sp-text-sm);
+  z-index: 1;
+}
+.route-stop.is-urgent .route-stop-num {
+  background: var(--sp-red-600);
+}
+.route-stop-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 2px;
+}
+.route-stop-time {
+  font-family: var(--sp-font-mono);
+  font-weight: var(--sp-fw-bold);
+  color: var(--sp-navy-700);
+}
+.route-stop-cust { font-size: var(--sp-text-md); font-weight: var(--sp-fw-bold); }
+.route-stop-addr {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--sp-text-muted);
+  margin-top: 2px;
+}
+.route-stop-svc {
+  font-size: 13px;
+  color: var(--sp-navy-700);
+  margin-top: 4px;
+  font-weight: var(--sp-fw-semibold);
+}
+.route-stop-notes {
+  margin-top: 6px;
+  padding: 8px 10px;
+  background: var(--sp-yellow-100);
+  border-left: 3px solid var(--sp-yellow-500);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--sp-navy-800);
+}

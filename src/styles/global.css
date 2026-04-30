@@ -1,0 +1,107 @@
+/* ServicePro — global resets and base styles */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--sp-font-sans);
+  font-size: var(--sp-text-md);
+  line-height: 1.5;
+  color: var(--sp-text);
+  background: var(--sp-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--sp-font-display);
+  font-weight: var(--sp-fw-bold);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--sp-text);
+}
+
+h1 { font-size: var(--sp-text-4xl); font-weight: var(--sp-fw-black); letter-spacing: -0.03em; }
+h2 { font-size: var(--sp-text-3xl); }
+h3 { font-size: var(--sp-text-2xl); }
+h4 { font-size: var(--sp-text-xl); }
+h5 { font-size: var(--sp-text-lg); }
+h6 { font-size: var(--sp-text-md); text-transform: uppercase; letter-spacing: 0.06em; }
+
+p { margin: 0; }
+
+a {
+  color: var(--sp-accent);
+  text-decoration: none;
+  font-weight: var(--sp-fw-semibold);
+}
+a:hover { color: var(--sp-accent-hover); text-decoration: underline; }
+
+button { font-family: inherit; }
+input, select, textarea { font-family: inherit; font-size: inherit; }
+
+::selection { background: var(--sp-accent); color: #fff; }
+
+/* Utility classes */
+.sp-stack > * + * { margin-top: var(--sp-space-4); }
+.sp-stack-sm > * + * { margin-top: var(--sp-space-2); }
+.sp-stack-lg > * + * { margin-top: var(--sp-space-8); }
+
+.sp-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-space-3);
+}
+.sp-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-space-3);
+}
+
+.sp-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--sp-fw-bold);
+  font-size: var(--sp-text-xs);
+}
+
+.sp-mono { font-family: var(--sp-font-mono); }
+
+.sp-mute { color: var(--sp-text-muted); }
+.sp-strong { font-weight: var(--sp-fw-bold); }
+
+/* Diagonal hazard stripe — used as marketing accent */
+.sp-hazard-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--sp-yellow-500) 0 16px,
+    var(--sp-navy-900) 16px 32px
+  );
+  height: 12px;
+  width: 100%;
+}
+
+/* Scrollbar — match industrial theme */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--sp-navy-100); }
+::-webkit-scrollbar-thumb {
+  background: var(--sp-navy-400);
+  border: 3px solid var(--sp-navy-100);
+  border-radius: var(--sp-radius-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--sp-navy-600); }
+
+/* Focus ring */
+:focus-visible {
+  outline: 3px solid var(--sp-orange-500);
+  outline-offset: 2px;
+  border-radius: var(--sp-radius-sm);
+}
+
+/* Disable native focus on mouse */
+:focus:not(:focus-visible) { outline: none; }
