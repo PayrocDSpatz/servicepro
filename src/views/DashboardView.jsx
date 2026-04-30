@@ -1,11 +1,12 @@
 import React from 'react';
 import Icon from '../components/Icon.jsx';
-import { customers, jobs, invoices, technicians } from '../data/mockData.js';
+import { useData } from '../data/DataContext.jsx';
 import { ACTIVE_TRADE } from '../data/tradeConfig.js';
 import { money, moneyCompact, time, dayOfWeek, statusBadgeClass, dateLong } from '../utils/format.js';
 import './DashboardView.css';
 
 export default function DashboardView() {
+  const { customers, jobs, invoices, technicians } = useData();
   const todayJobs = jobs.filter(j => j.start.startsWith('2026-04-30'));
   const upcoming = jobs.filter(j => !j.start.startsWith('2026-04-30') && j.status !== 'Completed').slice(0, 4);
   const overdueInv = invoices.filter(i => i.status === 'Overdue');

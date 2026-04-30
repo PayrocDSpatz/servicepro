@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import Icon from '../components/Icon.jsx';
-import { customers, invoices } from '../data/mockData.js';
+import { useData } from '../data/DataContext.jsx';
 import { money, dateLong, statusBadgeClass, initials } from '../utils/format.js';
 
 const TABS = ['All', 'Sent', 'Overdue', 'Paid'];
 
 export default function InvoicesView() {
+  const { customers, invoices } = useData();
   const [tab, setTab] = useState('All');
 
   const filtered = useMemo(() => {

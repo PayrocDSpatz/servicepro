@@ -1,10 +1,11 @@
 import React from 'react';
 import Icon from '../components/Icon.jsx';
-import { customers, servicePlans } from '../data/mockData.js';
+import { useData } from '../data/DataContext.jsx';
 import { money, dateLong, statusBadgeClass, initials } from '../utils/format.js';
 import './ServicePlansView.css';
 
 export default function ServicePlansView() {
+  const { customers, servicePlans } = useData();
   const active = servicePlans.filter(p => p.status === 'Active');
   const monthlyValue = active.reduce((s, p) => s + p.priceMonthly, 0);
   const annualValue = monthlyValue * 12;

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import Icon from '../components/Icon.jsx';
-import { customers, jobs, technicians } from '../data/mockData.js';
+import { useData } from '../data/DataContext.jsx';
 import { ACTIVE_TRADE } from '../data/tradeConfig.js';
 import { time, dateLong, statusBadgeClass, money } from '../utils/format.js';
 import './JobsView.css';
@@ -43,6 +43,7 @@ export default function JobsView() {
 /* ---------------- DAY BOARD ---------------- */
 
 function DayBoard() {
+  const { customers, jobs, technicians } = useData();
   const todayJobs = jobs.filter(j => j.start.startsWith('2026-04-30'));
   const hours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 
@@ -109,6 +110,7 @@ function DayBoard() {
 /* ---------------- LIST ---------------- */
 
 function JobList() {
+  const { customers, jobs, technicians } = useData();
   return (
     <div className="sp-table-wrap">
       <table className="sp-table">
@@ -161,6 +163,7 @@ function JobList() {
 /* ---------------- ROUTE SHEET ---------------- */
 
 function RouteSheet() {
+  const { customers, jobs, technicians } = useData();
   const todayJobs = jobs
     .filter(j => j.start.startsWith('2026-04-30'))
     .sort((a, b) => a.start.localeCompare(b.start));

@@ -1,9 +1,10 @@
 import React from 'react';
 import Icon from '../components/Icon.jsx';
-import { invoices, jobs, technicians } from '../data/mockData.js';
+import { useData } from '../data/DataContext.jsx';
 import { money } from '../utils/format.js';
 
 export default function ReportsView() {
+  const { invoices, jobs } = useData();
   const revenue30 = invoices.filter(i => i.status === 'Paid').reduce((s, i) => s + i.paid, 0);
   const open = invoices.filter(i => i.status !== 'Paid').reduce((s, i) => s + (i.total - i.paid), 0);
   const completedJobs = jobs.filter(j => j.status === 'Completed').length;

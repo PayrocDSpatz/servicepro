@@ -174,51 +174,48 @@
   border-radius: 50%;
   background: var(--sp-red-600);
 }
+.shell-user-wrap { position: relative; }
 .shell-user {
   display: flex;
   align-items: center;
   gap: var(--sp-space-2);
-  padding: 4px 4px 4px 4px;
+  padding: 4px var(--sp-space-2) 4px var(--sp-space-3);
+  border: none;
+  background: transparent;
   border-left: 1px solid var(--sp-border);
-  padding-left: var(--sp-space-3);
+  cursor: pointer;
+  border-radius: 0;
 }
-.shell-user-name { font-size: var(--sp-text-sm); font-weight: var(--sp-fw-bold); line-height: 1.2; }
-.shell-user-role { font-size: 11px; color: var(--sp-text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.shell-user:hover { background: var(--sp-navy-50); }
+.shell-user-name { font-size: var(--sp-text-sm); font-weight: var(--sp-fw-bold); line-height: 1.2; text-align: left; }
+.shell-user-role { font-size: 11px; color: var(--sp-text-muted); text-transform: uppercase; letter-spacing: 0.06em; text-align: left; }
 
-.shell-menu-btn { display: none; }
-
-/* ---------- CONTENT ---------- */
-.shell-content {
-  padding: var(--sp-space-8) var(--sp-space-6);
-  flex-grow: 1;
-  max-width: var(--sp-content-max);
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* ---------- MOBILE ---------- */
-.shell-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(7, 13, 26, 0.6);
+.shell-user-menu-overlay {
+  position: fixed; inset: 0;
   z-index: 30;
-  display: none;
 }
-
-@media (max-width: 980px) {
-  .shell-side {
-    position: fixed;
-    z-index: 40;
-    transform: translateX(-100%);
-    transition: transform var(--sp-dur-med) var(--sp-ease);
-  }
-  .shell-side.is-open { transform: translateX(0); }
-  .shell-menu-btn { display: inline-flex; }
-  .shell-overlay { display: block; }
-  .shell-user-meta { display: none; }
-  .shell-content { padding: var(--sp-space-6) var(--sp-space-4); }
+.shell-user-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 240px;
+  background: #fff;
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius-md);
+  box-shadow: var(--sp-shadow-lg);
+  z-index: 31;
+  overflow: hidden;
 }
-
-@media (max-width: 640px) {
-  .shell-search { display: none; }
+.shell-user-menu-head {
+  padding: var(--sp-space-3) var(--sp-space-4);
+  background: var(--sp-bg-sunken);
+  border-bottom: 1px solid var(--sp-border);
 }
+.shell-user-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-space-2);
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: var(--sp-spa

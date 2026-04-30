@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import Icon from '../components/Icon.jsx';
-import { customers } from '../data/mockData.js';
+import { useData } from '../data/DataContext.jsx';
 import { money, dateLong, initials } from '../utils/format.js';
 
 const FILTERS = ['All', 'Maintenance Plan', 'Commercial', 'New', 'Has Balance'];
 
 export default function CustomersView() {
+  const { customers } = useData();
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('All');
 

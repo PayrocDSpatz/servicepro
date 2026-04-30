@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import Icon from '../components/Icon.jsx';
-import { customers, equipment } from '../data/mockData.js';
+import { useData } from '../data/DataContext.jsx';
 import { dateLong, statusBadgeClass, initials } from '../utils/format.js';
 
 export default function EquipmentView() {
+  const { customers, equipment } = useData();
   const [category, setCategory] = useState('All');
   const categories = ['All', ...new Set(equipment.map(e => e.category))];
 
